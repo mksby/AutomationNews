@@ -1,5 +1,5 @@
-// Stage 0: minimal global stylesheet. The semantic token layer arrives in Stage 1
-// (src/styles/generated/tokens.css), and prose styles in Stage 3.
+// Stage 1: applies semantic tokens as defaults. Prose styles arrive in Stage 3.
+// Tokens are loaded from `src/styles/generated/tokens.css` in layout.tsx.
 
 *,
 *::before,
@@ -10,15 +10,40 @@
 html {
   height: 100%;
   scrollbar-gutter: stable;
+  color-scheme: dark light;
+
+  // Tokens carry the font stack — global is only the baseline.
+  font-family: var(--font-family-sans);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-leading);
 }
 
 body {
   margin: 0;
   min-height: 100dvh;
+  background: var(--color-bg);
+  color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
 }
 
 a {
   color: inherit;
+}
+
+:focus-visible {
+  outline: var(--border-hard) solid var(--color-focus);
+  outline-offset: var(--border-hard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

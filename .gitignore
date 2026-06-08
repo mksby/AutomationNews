@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Token-build scratch space (intermediate DESIGN fragment, etc.).
+# Final outputs in src/styles/generated/ and DESIGN.md ARE committed so
+# reviewers can audit token changes in PR diffs without running the build.
+.cache

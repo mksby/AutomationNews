@@ -1,0 +1,21 @@
+.skipLink {
+  position: absolute;
+  inset-inline-start: var(--space-3);
+  inset-block-start: var(--space-3);
+  z-index: var(--z-skiplink);
+  padding-block: var(--space-2);
+  padding-inline: var(--space-3);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-family: var(--font-family-mono);
+  font-size: var(--type-meta-size);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  border: var(--border-hard) solid var(--color-bg);
+  transform: translateY(-150%);
+  transition: transform var(--duration-fast) var(--easing-out);
+
+  &:focus-visible {
+    transform: translateY(0);
+  }
+}

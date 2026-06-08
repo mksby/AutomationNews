@@ -1,0 +1,30 @@
+.figure {
+  margin-block: var(--space-6);
+}
+
+.frame {
+  border: var(--border-hair) solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.pixel {
+  border-color: var(--color-accent);
+}
+
+.pixel .image {
+  image-rendering: pixelated;
+}
+
+.image {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+.caption {
+  margin-block-start: var(--space-2);
+  font-family: var(--type-meta-family);
+  font-size: var(--type-meta-size);
+  line-height: var(--type-meta-leading);
+  color: var(--color-text-muted);
+}

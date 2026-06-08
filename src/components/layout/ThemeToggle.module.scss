@@ -1,0 +1,31 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--space-6);
+  min-inline-size: var(--space-7);
+  padding-inline: var(--space-2);
+  background: transparent;
+  color: var(--color-text-muted);
+  border: var(--border-hair) solid var(--color-border);
+  font-family: var(--type-label-family);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--easing-out),
+    border-color var(--duration-fast) var(--easing-out);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-text);
+    border-color: var(--color-border-active);
+  }
+}
+
+.label {
+  display: inline-block;
+  min-inline-size: var(--space-7);
+  text-align: center;
+}

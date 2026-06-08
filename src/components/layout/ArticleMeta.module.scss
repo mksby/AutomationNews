@@ -1,0 +1,14 @@
+.meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--space-2);
+  font-family: var(--type-meta-family);
+  font-size: var(--type-meta-size);
+  line-height: var(--type-meta-leading);
+  color: var(--color-text-muted);
+}
+
+.sep {
+  color: var(--color-border);
+}

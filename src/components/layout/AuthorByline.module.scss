@@ -1,0 +1,22 @@
+.byline {
+  margin: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+  font-family: var(--type-meta-family);
+  font-size: var(--type-meta-size);
+  line-height: var(--type-meta-leading);
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-label);
+  font-size: var(--type-label-size);
+  color: var(--color-border-active);
+}
+
+.name {
+  color: var(--color-text);
+  font-family: var(--font-family-sans);
+}

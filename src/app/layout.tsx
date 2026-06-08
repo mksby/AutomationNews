@@ -3,13 +3,22 @@ import "@/styles/generated/tokens.css";
 import "@/styles/generated/tokens.light.css";
 import "./globals.scss";
 import { fontVariableClasses } from "./fonts";
+import { IS_PREVIEW, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "automation.news",
-    template: "%s · automation.news",
+    default: SITE_NAME,
+    template: `%s · ${SITE_NAME}`,
   },
-  description: "News and analysis on industrial, business-process, RPA and AI automation.",
+  description: SITE_DESCRIPTION,
+  robots: IS_PREVIEW ? { index: false, follow: false } : { index: true, follow: true },
+  alternates: {
+    types: {
+      "application/rss+xml": "/rss",
+      "application/feed+json": "/feed.json",
+    },
+  },
 };
 
 export const viewport: Viewport = {

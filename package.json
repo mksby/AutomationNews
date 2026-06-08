@@ -16,11 +16,17 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@content-collections/core": "^0.15.1",
+    "@content-collections/mdx": "^0.2.2",
+    "@content-collections/next": "^0.2.11",
     "next": "16.2.7",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "reading-time": "^1.5.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@shikijs/rehype": "^4.2.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -28,6 +34,7 @@
     "eslint-config-next": "16.2.7",
     "prettier": "^3.8.3",
     "sass": "^1.100.0",
+    "shiki": "^4.2.0",
     "style-dictionary": "^5.4.4",
     "stylelint": "^17.13.0",
     "stylelint-config-prettier-scss": "^1.0.0",

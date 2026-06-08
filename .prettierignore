@@ -6,4 +6,6 @@ coverage
 .vercel
 .content-collections
 src/styles/generated
+.cache
+DESIGN.md
 pnpm-lock.yaml

@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# content-collections build output (regenerated on every build)
+.content-collections
+
 # Token-build scratch space (intermediate DESIGN fragment, etc.).
 # Final outputs in src/styles/generated/ and DESIGN.md ARE committed so
 # reviewers can audit token changes in PR diffs without running the build.

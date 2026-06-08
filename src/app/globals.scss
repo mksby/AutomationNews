@@ -1,0 +1,24 @@
+// Stage 0: minimal global stylesheet. The semantic token layer arrives in Stage 1
+// (src/styles/generated/tokens.css), and prose styles in Stage 3.
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+}

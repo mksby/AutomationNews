@@ -1,0 +1,114 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel in-flight runs for the same ref when a newer commit arrives.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Quality (typecheck · lint · stylelint · format · build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build tokens
+        run: pnpm tokens:build
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: ESLint
+        run: pnpm lint
+
+      - name: Stylelint (design-token gate)
+        run: pnpm stylelint
+
+      - name: Prettier
+        run: pnpm format:check
+
+      - name: Next build (Turbopack)
+        run: pnpm build
+
+  lighthouse:
+    name: Lighthouse CI (Vercel Preview)
+    needs: quality
+    runs-on: ubuntu-latest
+    # Lighthouse runs against the preview deployment Vercel publishes on
+    # every PR. Skip on direct pushes to main (production deploys aren't
+    # gated by this).
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for Vercel Preview
+        id: preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 600
+          check_interval: 10
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            ${{ steps.preview.outputs.url }}/
+            ${{ steps.preview.outputs.url }}/posts/hello-automation
+            ${{ steps.preview.outputs.url }}/ai
+          configPath: ./.lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: spec-smoke (headers + agent endpoints)
+        env:
+          BASE: ${{ steps.preview.outputs.url }}
+        run: |
+          set -euo pipefail
+
+          fail() { echo "❌ $*" >&2; exit 1; }
+
+          echo "→ Security headers on $BASE/"
+          headers=$(curl -sIL "$BASE/")
+          for h in "strict-transport-security" "x-content-type-options" \
+                   "referrer-policy" "x-frame-options" "permissions-policy" \
+                   "content-security-policy"; do
+            echo "$headers" | grep -iq "^$h:" || fail "missing header: $h"
+          done
+          echo "$headers" | grep -iq "frame-ancestors 'none'" \
+            || fail "CSP frame-ancestors 'none' not present"
+
+          echo "→ Link header advertises machine-readable feeds"
+          link=$(echo "$headers" | grep -i "^link:" || true)
+          for rel in 'rel="sitemap"' 'rel="alternate"' 'rel="llms"' \
+                     'rel="api-catalog"'; do
+            echo "$link" | grep -q "$rel" || fail "Link header missing $rel"
+          done
+
+          echo "→ Agent endpoints respond 200"
+          for path in "/llms.txt" "/feed.json" "/rss" "/sitemap.xml" \
+                     "/robots.txt" "/posts/hello-automation.md" \
+                     "/.well-known/security.txt" "/.well-known/api-catalog"; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "$BASE$path")
+            [ "$code" = "200" ] || fail "$path returned $code"
+          done
+
+          echo "✓ smoke OK"

@@ -40,20 +40,30 @@ const config = {
       rules: {
         "color-no-hex": true,
         "color-named": "never",
+        // px is forbidden in declarations — but @media (min-width: …) needs raw
+        // pixel values (CSS variables don't resolve inside media-query expressions).
+        // The breakpoint tokens are the source of truth; keep them in sync with
+        // tokens/primitive/dimension.tokens.json by convention.
         "unit-disallowed-list": [
           ["px"],
           {
+            ignoreMediaFeatureNames: {
+              px: ["min-width", "max-width", "min-height", "max-height"],
+            },
             message:
               "Raw px is not allowed in component styles — use a spacing/type/border token (var(--space-*), var(--type-*), var(--border-*)).",
           },
         ],
+        "media-feature-range-notation": null,
         "declaration-property-value-allowed-list": [
           {
-            "font-family": ["/^var\\(--font-/"],
+            // Allow either a direct font-stack token (--font-family-*) or a
+            // semantic type-role family (--type-*-family).
+            "font-family": ["/^var\\(--font-/", "/^var\\(--type-.+-family\\)/"],
           },
           {
             message:
-              "font-family must reference a token: var(--font-sans|--font-mono|--font-display).",
+              "font-family must reference a token: var(--font-family-*) or var(--type-*-family).",
           },
         ],
       },
@@ -63,6 +73,15 @@ const config = {
       files: ["src/app/globals.scss", "src/styles/**/*.scss"],
       rules: {
         "color-no-hex": true,
+      },
+    },
+    {
+      // Prose styles do typography micro-adjustments (underline thickness/offset,
+      // inline-code padding) that have no semantic token. Tokens still required
+      // for color/font-family — only the px-gate is relaxed here.
+      files: ["src/components/mdx/prose.module.scss"],
+      rules: {
+        "unit-disallowed-list": null,
       },
     },
   ],

@@ -2,6 +2,7 @@ import { SkipLink } from "@/components/layout/SkipLink";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { SpeculationRules } from "@/components/seo/SpeculationRules";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/site";
 
 const siteJsonLd = {
@@ -30,6 +31,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <JsonLd data={siteJsonLd} />
+      <SpeculationRules />
       <SkipLink />
       <SiteHeader />
       {children}

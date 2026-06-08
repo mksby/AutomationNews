@@ -54,3 +54,9 @@ a {
     scroll-behavior: auto !important;
   }
 }
+
+// Cross-document View Transitions — supported browsers fade between same-origin
+// navigations; unsupported browsers fall back to instant navigation.
+@view-transition {
+  navigation: auto;
+}

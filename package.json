@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@shikijs/rehype": "^4.2.0",
+    "@types/mdx": "^2.0.14",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "@/styles/generated/tokens.css";
 import "@/styles/generated/tokens.light.css";
 import "./globals.scss";
+import { fontVariableClasses } from "./fonts";
 
 export const metadata: Metadata = {
   title: {
@@ -21,7 +22,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={fontVariableClasses}>
       <body>{children}</body>
     </html>
   );

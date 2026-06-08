@@ -8,11 +8,18 @@
 }
 
 html {
+  // Splice the next/font-provided variables into the token stack. The semantic
+  // font-family tokens transparently pick these up so component styles continue
+  // to consume var(--font-family-*).
+  --font-family-sans:
+    var(--font-sans-loaded), "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-family-mono: var(--font-mono-loaded), "JetBrains Mono", ui-monospace, "Menlo", monospace;
+  --font-family-display:
+    var(--font-display-loaded), "Departure Mono", "JetBrains Mono", ui-monospace, monospace;
+
   height: 100%;
   scrollbar-gutter: stable;
   color-scheme: dark light;
-
-  // Tokens carry the font stack — global is only the baseline.
   font-family: var(--font-family-sans);
   font-size: var(--type-body-size);
   line-height: var(--type-body-leading);

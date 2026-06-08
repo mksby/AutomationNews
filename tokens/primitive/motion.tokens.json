@@ -1,0 +1,24 @@
+{
+  "duration": {
+    "$type": "duration",
+    "instant": { "$value": "75ms" },
+    "fast": { "$value": "150ms" },
+    "base": { "$value": "250ms" },
+    "slow": { "$value": "400ms" }
+  },
+  "easing": {
+    "$type": "cubicBezier",
+    "standard": { "$value": [0.2, 0, 0, 1] },
+    "out": { "$value": [0, 0, 0, 1] },
+    "in": { "$value": [0.4, 0, 1, 1] }
+  },
+  "z": {
+    "$type": "number",
+    "base": { "$value": 0 },
+    "raised": { "$value": 10 },
+    "sticky": { "$value": 100 },
+    "header": { "$value": 200 },
+    "overlay": { "$value": 1000 },
+    "skiplink": { "$value": 9999 }
+  }
+}

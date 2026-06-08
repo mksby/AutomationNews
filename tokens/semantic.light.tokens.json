@@ -1,0 +1,46 @@
+{
+  "color": {
+    "$type": "color",
+    "bg": { "$value": "{color.paper.100}" },
+    "bg-deep": { "$value": "{color.paper.200}" },
+    "surface": { "$value": "{color.paper.200}" },
+    "surface-2": { "$value": "{color.paper.300}" },
+    "border": { "$value": "{color.paper.400}" },
+    "border-active": { "$value": "{color.charcoal.500}" },
+    "text": { "$value": "{color.charcoal.900}" },
+    "text-muted": { "$value": "{color.charcoal.500}" },
+    "accent": { "$value": "{color.amber.600}" },
+    "accent-strong": { "$value": "{color.amber.500}" },
+    "focus": { "$value": "{color.amber.600}" }
+  },
+  "shadow": {
+    "$type": "shadow",
+    "pixel-sm": {
+      "$value": {
+        "offsetX": "3px",
+        "offsetY": "3px",
+        "blur": "0",
+        "spread": "0",
+        "color": "{color.amber.600}"
+      }
+    },
+    "pixel-md": {
+      "$value": {
+        "offsetX": "6px",
+        "offsetY": "6px",
+        "blur": "0",
+        "spread": "0",
+        "color": "{color.amber.600}"
+      }
+    },
+    "pixel-border": {
+      "$value": {
+        "offsetX": "4px",
+        "offsetY": "4px",
+        "blur": "0",
+        "spread": "0",
+        "color": "{color.charcoal.500}"
+      }
+    }
+  }
+}

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "tokens:build": "node build-tokens.mjs",
+    "predev": "pnpm tokens:build",
+    "prebuild": "pnpm tokens:build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -25,6 +28,7 @@
     "eslint-config-next": "16.2.7",
     "prettier": "^3.8.3",
     "sass": "^1.100.0",
+    "style-dictionary": "^5.4.4",
     "stylelint": "^17.13.0",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^17.0.0",

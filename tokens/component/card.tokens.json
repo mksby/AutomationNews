@@ -1,0 +1,16 @@
+{
+  "card": {
+    "bg": { "$type": "color", "$value": "{color.surface}" },
+    "border": { "$type": "color", "$value": "{color.border}" },
+    "border-hover": { "$type": "color", "$value": "{color.border-active}" },
+    "padding": { "$type": "dimension", "$value": "{space.5}" },
+    "gap": { "$type": "dimension", "$value": "{space.3}" }
+  },
+  "chip": {
+    "bg": { "$type": "color", "$value": "{color.surface-2}" },
+    "text": { "$type": "color", "$value": "{color.text-muted}" },
+    "border": { "$type": "color", "$value": "{color.border}" },
+    "padding-x": { "$type": "dimension", "$value": "{space.2}" },
+    "padding-y": { "$type": "dimension", "$value": "{space.1}" }
+  }
+}

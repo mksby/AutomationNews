@@ -1,0 +1,40 @@
+{
+  "space": {
+    "$type": "dimension",
+    "$description": "Spacing scale — fluid via rem, 1rem = 16px",
+    "0": { "$value": "0" },
+    "1": { "$value": "0.25rem", "$description": "4px" },
+    "2": { "$value": "0.5rem", "$description": "8px" },
+    "3": { "$value": "0.75rem", "$description": "12px" },
+    "4": { "$value": "1rem", "$description": "16px" },
+    "5": { "$value": "1.5rem", "$description": "24px" },
+    "6": { "$value": "2rem", "$description": "32px" },
+    "7": { "$value": "3rem", "$description": "48px" },
+    "8": { "$value": "4rem", "$description": "64px" },
+    "9": { "$value": "6rem", "$description": "96px" }
+  },
+  "border": {
+    "$type": "dimension",
+    "hair": { "$value": "1px", "$description": "Subtle divider" },
+    "hard": { "$value": "2px", "$description": "Pixel-loft default border" },
+    "thick": { "$value": "3px", "$description": "Emphasis/focus" }
+  },
+  "radius": {
+    "$type": "dimension",
+    "none": { "$value": "0", "$description": "Pixel idiom default" },
+    "sm": { "$value": "2px", "$description": "Discrete pixel chamfer — rare" }
+  },
+  "breakpoint": {
+    "$type": "dimension",
+    "$description": "Mobile-first min-width breakpoints",
+    "sm": { "$value": "640px" },
+    "md": { "$value": "768px" },
+    "lg": { "$value": "1024px" },
+    "xl": { "$value": "1280px" }
+  },
+  "container": {
+    "$type": "dimension",
+    "reading": { "$value": "68ch", "$description": "Article body max-inline-size" },
+    "wide": { "$value": "76rem", "$description": "Layout max-width" }
+  }
+}

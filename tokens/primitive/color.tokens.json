@@ -1,0 +1,26 @@
+{
+  "color": {
+    "$type": "color",
+    "charcoal": {
+      "950": { "$value": "#0F1014", "$description": "Almost-black, sub-bg" },
+      "900": { "$value": "#16171B", "$description": "Concrete dark bg" },
+      "800": { "$value": "#1E2024", "$description": "Raw steel" },
+      "700": { "$value": "#25282E", "$description": "Elevated surface, code" },
+      "600": { "$value": "#33373E", "$description": "Hairline divider" },
+      "500": { "$value": "#5A6068", "$description": "UI outline, ≥3:1 contrast" },
+      "400": { "$value": "#868D94", "$description": "Muted text, 5.3:1 on bg" },
+      "300": { "$value": "#A8AEB4", "$description": "Dimmed text on light bg" },
+      "100": { "$value": "#E8E6E1", "$description": "Body on dark bg, 14.4:1" }
+    },
+    "paper": {
+      "100": { "$value": "#FAFAF7", "$description": "Light bg" },
+      "200": { "$value": "#F2F1ED", "$description": "Light surface" },
+      "300": { "$value": "#E6E4DE", "$description": "Light elevated surface" },
+      "400": { "$value": "#D3D0C8", "$description": "Light border" }
+    },
+    "amber": {
+      "500": { "$value": "#F5A623", "$description": "Safety amber accent, 8.8:1 on dark bg" },
+      "600": { "$value": "#C8841A", "$description": "Amber on light bg, 4.6:1" }
+    }
+  }
+}

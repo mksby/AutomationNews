@@ -1,0 +1,46 @@
+---
+slug: hello-automation
+title: "Hello, automation"
+description: A first dispatch from automation.news — what we cover, why, and how this site is built.
+date: 2026-01-15
+category: ai
+tags: [meta, manifesto]
+author: editorial
+draft: false
+---
+
+Welcome to **automation.news** — a news desk for the long automation arc:
+industrial robotics, business-process orchestration, RPA, and the AI systems
+sliding into the seams between them.
+
+## What we cover
+
+We report on three layers, mostly where they meet:
+
+- **Metal** — factories, PLCs, robotics, SCADA.
+- **Process** — workflow engines, BPM, RPA, decision systems.
+- **Intelligence** — agents, copilots, model-in-the-loop systems, evaluations.
+
+## Why a static site
+
+Content lives in this repository as MDX. No CMS, no database. A single
+content-collections pipeline validates frontmatter with Zod and types the
+result so the rest of the site can rely on it.
+
+```ts
+const articles = defineCollection({
+  name: "articles",
+  schema: z.object({
+    slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+```
+
+## Reading this site as an agent
+
+Every article also ships as raw markdown at `/posts/[slug].md`, a JSON
+Feed lives at `/feed.json`, and `/llms.txt` curates the index. The Link
+header advertises these on every response, so an agent that doesn't parse
+HTML can still find the sources.
